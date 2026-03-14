@@ -1294,3 +1294,213 @@ body.dark-mode .file-link {
 body.dark-mode .file-link:hover {
     background-color: var(--bg-secondary);
 }
+/* A2UI Tree View Styles for A2A Inspector */
+
+.a2ui-surface-card {
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  margin: 8px 0;
+  overflow: hidden;
+  background: var(--surface-bg, #fafafa);
+}
+
+.dark-mode .a2ui-surface-card {
+  border-color: #444;
+  background: #1e1e1e;
+}
+
+/* Header */
+.a2ui-surface-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--header-bg, #f0f0f0);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  flex-wrap: wrap;
+}
+
+.dark-mode .a2ui-surface-header {
+  background: #2a2a2a;
+  border-bottom-color: #444;
+}
+
+.a2ui-icon {
+  font-size: 16px;
+}
+
+.a2ui-surface-title {
+  font-size: 13px;
+  color: var(--text-primary, #333);
+}
+
+.dark-mode .a2ui-surface-title {
+  color: #ddd;
+}
+
+.a2ui-version-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+.a2ui-catalog-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  background: #ecf0f1;
+  color: #555;
+}
+
+.dark-mode .a2ui-catalog-badge {
+  background: #333;
+  color: #aaa;
+}
+
+.a2ui-component-count {
+  font-size: 11px;
+  color: #888;
+  margin-left: auto;
+}
+
+/* Tree */
+.a2ui-tree {
+  padding: 8px 12px;
+}
+
+.a2ui-tree-node {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.a2ui-node-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.a2ui-node-label:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .a2ui-node-label:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.a2ui-expand-icon {
+  width: 12px;
+  font-size: 10px;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.a2ui-component-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.a2ui-component-type {
+  color: #2980b9;
+  font-weight: 600;
+}
+
+.dark-mode .a2ui-component-type {
+  color: #5dade2;
+}
+
+.a2ui-component-id {
+  color: #888;
+  font-size: 11px;
+}
+
+.a2ui-component-summary {
+  color: #27ae60;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 300px;
+}
+
+.dark-mode .a2ui-component-summary {
+  color: #2ecc71;
+}
+
+/* Properties (collapsed) */
+.a2ui-node-props {
+  margin-left: 32px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.a2ui-node-props pre {
+  font-size: 11px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin: 0;
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dark-mode .a2ui-node-props pre {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Missing component warning */
+.a2ui-missing {
+  color: #e74c3c;
+  font-style: italic;
+  font-size: 11px;
+}
+
+/* Data Model section */
+.a2ui-data-model {
+  border-top: 1px solid var(--border-color, #e0e0e0);
+  padding: 8px 12px;
+}
+
+.dark-mode .a2ui-data-model {
+  border-top-color: #444;
+}
+
+.a2ui-data-header {
+  font-size: 12px;
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.a2ui-data-header:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .a2ui-data-header {
+  color: #ddd;
+}
+
+.a2ui-data-content {
+  font-size: 11px;
+  margin-top: 4px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  overflow-x: auto;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dark-mode .a2ui-data-content {
+  background: rgba(255, 255, 255, 0.05);
+}

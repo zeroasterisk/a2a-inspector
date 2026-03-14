@@ -1,6 +1,8 @@
 import {io} from 'socket.io-client';
 import {marked} from 'marked';
 import DOMPurify from 'dompurify';
+import { tryRenderA2UIPart } from './a2ui-tree-view';
+import { extractA2UIParts } from './a2ui-detector';
 
 // A2A File types (matching spec)
 interface FileBase {
@@ -980,6 +982,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const processPart = (p: any): string | null => {
+    try {
+      const a2uiHtml = tryRenderA2UIPart(p);
+      if (a2uiHtml) return a2uiHtml;
+    } catch (err) {
+      console.error('A2UI render error:', err);
+    }
+
     if (p.text) {
       return DOMPurify.sanitize(marked.parse(p.text) as string);
     } else if (p.file) {
@@ -1147,12 +1156,26 @@ document.addEventListener('DOMContentLoaded', () => {
       '<span class="json-highlight">"method": "$1"</span>',
     );
 
+    let a2uiAddon = '';
+    try {
+      const a2uiParts = extractA2UIParts(log.data);
+      if (a2uiParts && a2uiParts.length > 0) {
+        a2uiParts.forEach(p => {
+          const html = tryRenderA2UIPart({ data: p.data, metadata: { mimeType: 'application/json+a2ui' } });
+          if (html) {
+             a2uiAddon += `<div class="debug-a2ui-preview" style="margin-top: 8px;">${html}</div>`;
+          }
+        });
+      }
+    } catch(e) { console.error('Error rendering A2UI in debug:', e); }
+
     logEntry.className = `log-entry log-${log.type}`;
     logEntry.innerHTML = `
             <div>
                 <span class="log-timestamp">${timestamp}</span>
                 <strong>${log.type.toUpperCase()}</strong>
             </div>
+            ${a2uiAddon}
             <pre>${jsonString}</pre>
         `;
     debugContent.appendChild(logEntry);
